@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<%=require('html-loader!./layout/head-common.html')%>
+		<title>电商平台</title>
+	</head>
+	<body>
+		<%=require('html-loader!./layout/nav-simple.html')%>
+		<%=require('html-loader!./layout/nav.html')%>
+		<%=require('html-loader!./layout/header.html')%>
+		<div class="crumb">
+		    <div class="w">
+		        <div class="crumb-con">
+		            <a class="link" href="./index.html">MMall</a>
+		            <span>></span>
+		            <span class="link-text"><%= htmlWebpackPlugin.options.title%></span>
+		        </div>
+		    </div>
+		</div>
+		<div class="page-wrap w">
+			<%=require('html-loader!./layout/nav-side.html')%>
+			<div class="content with-nav">
+				<div class="panel">
+					<div class="panel-title">个人中心</div>
+					<div class="panel-body">
+						<div class="user-info">
+							<div class="form-line"> <span class="label">用户名：</span> <span class="text">admin</span> </div>
+							<div class="form-line"> <span class="label">电 话：</span> <input class="input" id="phone" autocomplete="off" value="13800138000">
+							</div>
+							<div class="form-line"> <span class="label">邮 箱：</span> <input class="input" id="email" autocomplete="off" value="admin@lenotang.com">
+							</div>
+							<div class="form-line"> <span class="label">问 题：</span> <input class="input" id="question" autocomplete="off"
+								 value="问题"> </div>
+							<div class="form-line"> <span class="label">答 案：</span> <input class="input" id="answer" autocomplete="off"
+								 value="答案"> </div> <span class="btn btn-submit">提交</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<%=require('html-loader!./layout/footer.html')%>
+	</body>
+</html>
