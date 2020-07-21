@@ -67,6 +67,26 @@
     border: 1px solid #bdbdbd;
     outline: none;
 }
+
+.user-con .user-item .user-content{
+    padding: 10px 0 10px 50px;
+    width: 308px;
+    height: 18px;
+    line-height: 18px;
+    font-size: 15px;
+    border: 1px solid #bdbdbd;
+    outline: none;
+}
+
+.user-con .user-item  .imgcode{
+	width: 100px;
+	height: 40px;
+   float: right;
+}
+.user-con .user-item  .img-code{
+	width: 180px;
+  
+}
 .user-con .btn-submit{
     width: 100%;
     padding: 2px 0;

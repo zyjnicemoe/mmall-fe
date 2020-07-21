@@ -18,6 +18,10 @@ var formError = {
 // page 逻辑部分
 var page = {
     init: function(){
+		//点击图片切换验证码
+		$("#vcodeImg").click(function () {
+			this.src="/user/getVerifiCodeImage.do?"+ new Date().getTime();
+		});
         this.bindEvent();
     },
     bindEvent : function(){
@@ -38,7 +42,8 @@ var page = {
     submit : function(){
         var formData = {
                 username : $.trim($('#username').val()),
-                password : $.trim($('#password').val())
+                password : $.trim($('#password').val()),
+				code : $.trim($('#verifiCode').val())
             },
             // 表单验证结果
             validateResult = this.formValidate(formData);

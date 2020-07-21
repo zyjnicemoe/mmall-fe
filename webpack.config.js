@@ -94,17 +94,17 @@ var config = {
         new HtmlWebpackPlugin(getHtmlConfig('result', '操作结果')),
         new HtmlWebpackPlugin(getHtmlConfig('about', '关于MMall')),
     ]
-	// ,
- //    devServer: {
- //            port: 8088,
- //            inline: true,
- //            proxy : {
- //                '**/*.do' : {
- //                    target: 'http://localhost:8080/',
- //                    changeOrigin : true
- //                }
- //            }
- //        }
+	 ,
+   devServer: {
+             port: 8088,
+             inline: true,
+             proxy : {
+                 '**/*.do' : {
+                     target: 'http://localhost:8080/',
+                     changeOrigin : true
+                 }
+             }
+         }
 };
 
 

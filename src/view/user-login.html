@@ -23,12 +23,23 @@
 					</div>
 					<div class="user-item">
 						<label class="user-label" for="password">
-							<i class="fa fa-key"></i>
+							<i class="fa fa-lock"></i>
 						</label>
 						<input type="password" class="user-content" id="password" name="password" placeholder="请输入您的密码" autocomplete="off"/>
 					</div>
+					<div class="user-item">
+						<label class="user-label" for="verifiCode">
+							<i class="fa fa-key"></i>
+						</label>
+							<img class="imgcode" title="点击图片切换验证码哟 ~" id="vcodeImg"
+							src="/user/getVerifiCodeImage.do" alt="#" >
+							<input id="verifiCode" class="user-content img-code" name="verifiCode" type="text"
+					                           placeholder="验证码">
+					</div>
+				
 					<span id="submit" class="btn btn-submit">登录</span>
 					<div class="link-item">
+						
 						<a class="link" href="./user-pass-reset.html" target="_blank">忘记密码</a>
 						<a class="link" href="./user-register.html"  target="_blank">注册</a>
 					</div>	
