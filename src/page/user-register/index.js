@@ -15,10 +15,12 @@ var formError = {
     }
 };
 
+
 // page 逻辑部分
 var page = {
     init: function(){
         this.bindEvent();
+		
     },
     bindEvent : function(){
         var _this = this;
@@ -36,6 +38,9 @@ var page = {
                 formError.show(errMsg);
             });
         });
+		$('#sendSMS').click(function(){
+			_this.sendsms();
+		});
         // 注册按钮的点击
         $('#submit').click(function(){
             _this.submit();
@@ -48,6 +53,68 @@ var page = {
             }
         });
     },
+	sendsms: function(){
+				
+		        var phone = $('input[name=phone]').val().trim();
+				if(phone===""){
+					formError.show("请输入手机号");
+					return;
+				}else{
+					if(!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(phone))){
+					formError.show("手机号输入格式有误");
+					return;
+				}else{	
+						var btn_sms = document.getElementById("sendSMS");
+						btn_sms.disabled = true;   //当点击后倒计时时候不能点击此按钮
+						var time = 60;   //倒计时60秒
+						var timer = setInterval(fun1, 1000);    //设置定时器
+						function fun1() {
+						    time--;
+						    if(time>=0) {
+						        btn_sms.innerHTML = time + "s后重新发送";
+								btn_sms.disabled = true;
+						    }else{
+						        btn_sms.innerHTML = "重新发送验证码";
+								$(".sendSMS").attr("disabled", false);
+						        btn_sms.disabled = false;    //倒计时结束能够重新点击发送的按钮
+						        clearTimeout(timer);    //清除定时器
+						        time = 2;   //设置循环重新开始条件
+						    }
+						}
+						console.log("获取短信验证码")
+					   	//这里写发送验证码的代码
+					    $.ajax({
+					        type: "post",
+					        url: "/sms/send.do",
+					        data: {
+					    		phone:phone
+					    	},
+					        dataType: "json",
+					        success: function (data) {
+					    		console.log(data);
+					    	var sendStatusSet=data.SendStatusSet; 
+					    	console.log(sendStatusSet);
+					    	 for(var i=0;i<sendStatusSet.length;i++)
+					    	 {  
+					    	  var Code= sendStatusSet[0].Code;  
+					    	 }   
+					        if (Code==='Ok') {
+					            $("#sendSMS").html("发送成功");
+								btn_sms.disabled = true;
+					    		
+					        } else {
+					    		$("#sendSMS").html("发送失败"); 
+								btn_sms.disabled = false;  
+					            }
+					        }
+					    });
+					
+					
+				}
+			}
+		
+	}
+	,
     // 提交表单
     submit : function(){
         var formData = {
@@ -55,6 +122,7 @@ var page = {
                 password        : $.trim($('#password').val()),
                 passwordConfirm : $.trim($('#password-confirm').val()),
                 phone           : $.trim($('#phone').val()),
+				sms             :$.trim($('#sms').val()),
                 email           : $.trim($('#email').val()),
                 question        : $.trim($('#question').val()),
                 answer          : $.trim($('#answer').val())
@@ -65,7 +133,7 @@ var page = {
         if(validateResult.status){
             _user.register(formData, function(res){
                 window.location.href = './result.html?type=register';
-            }, function(errMsg){
+            }, function(errMsg){	
                 formError.show(errMsg);
             });
         }

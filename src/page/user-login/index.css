@@ -79,13 +79,12 @@
 }
 
 .user-con .user-item  .imgcode{
-	width: 100px;
-	height: 40px;
+	width: 150px;
+	height: 45px;
    float: right;
 }
 .user-con .user-item  .img-code{
-	width: 180px;
-  
+	width: 150px;
 }
 .user-con .btn-submit{
     width: 100%;

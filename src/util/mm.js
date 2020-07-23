@@ -25,6 +25,7 @@ var _mm = {
                 else if(1 === res.status){
                     typeof param.error === 'function' && param.error(res.msg);
                 }
+				
             },
             error       : function(err){
                 typeof param.error === 'function' && param.error(err.statusText);
